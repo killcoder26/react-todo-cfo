@@ -1,0 +1,45 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+}
+.header {
+  margin: 1rem;
+  flex: 10%;
+}
+.img-head {
+  height: 10rem;
+  width: 100%;
+  border-radius: 1rem;
+}
+.todo {
+  flex: 60%;
+  text-align: left;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 1.4rem;
+  color: coral;
+  background-color: black;
+  margin: 1rem;
+  border-radius: 2rem;
+}
+.todo2 {
+  flex: 30%;
+  text-align: left;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 1rem;
+  color: red;
+  background-color: black;
+  margin: 1rem;
+  border-radius: 2rem;
+}
+.task {
+  display: grid;
+}
+.list {
+  width: 100%;
+}
+span {
+  margin-left: 1rem;
+}
