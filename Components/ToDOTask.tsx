@@ -66,7 +66,7 @@ const ToDOTask = ({ task, deleteTask }: Props, key: number) => {
       </div>
       <Dialog open={open} onClose={dialogClose}>
         <DialogTitle>EDIT TASKS</DialogTitle>
-        <DialogContent>
+        <DialogContent sx={{ width: 300, height: 170 }}>
           <DialogContentText>Enter Task Name:</DialogContentText>
           <TextField
             autoFocus
@@ -75,7 +75,7 @@ const ToDOTask = ({ task, deleteTask }: Props, key: number) => {
             onChange={(e) => {
               setEditedtask(e.target.value);
             }}
-            sx={{ width: 200 }}
+            sx={{ width:290,marginTop:2,marginBottom:1 }}
           />
           <DialogContentText>Enter Task Duration:</DialogContentText>
           <TextField
@@ -85,7 +85,7 @@ const ToDOTask = ({ task, deleteTask }: Props, key: number) => {
             onChange={(e) => {
               setEditedDay(Number(e.target.value));
             }}
-            sx={{ width: 200 }}
+            sx={{ width:290,marginTop:2,marginBottom:1 }}
           />
         </DialogContent>
         <DialogActions>
