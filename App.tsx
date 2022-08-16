@@ -8,33 +8,6 @@ import RefreshIcon from '@mui/icons-material/Refresh';
 import { ITask } from './Interfaces';
 import ToDOTask from './Components/ToDOTask';
 
-const CssTextField = styled(TextField)({
-  '& label.Mui-focused': {
-    color: 'green',
-  },
-  '& .MuiInput-underline:after': {
-    borderBottomColor: 'green',
-  },
-  '& .MuiOutlinedInput-root': {
-    '& fieldset': {
-      borderColor: 'red',
-    },
-    '&:hover fieldset': {
-      borderColor: 'yellow',
-    },
-    '&.Mui-focused fieldset': {
-      borderColor: 'green',
-    },
-  },
-});
-const DayTextField = styled(TextField)({
-  '& .MuiOutlinedInput-root': {
-    '&:hover fieldset': {
-      borderColor: 'violet',
-    },
-  },
-});
-
 const App: FC = () => {
   const [task, setTask] = useState<string>(' ');
   const [deadline, setDeadline] = useState<number>(0);
@@ -70,16 +43,15 @@ const App: FC = () => {
   };
   const deleteTask = (taskNametoDelete: string): void => {
     setTodolist(todoList.filter((t) => t.taskName !== taskNametoDelete));
-    //let a = todoList.filter(t => t.taskName !== (taskNametoDelete));
-    //setdeletedlist([...deletedList]);
-    setdeletedlist(todoList.filter((t) => t.taskName === taskNametoDelete));
+    let a = todoList.filter((t) => t.taskName === taskNametoDelete);
+    setdeletedlist([...deletedList, ...a]);
     console.log(deletedList);
   };
 
   return (
     <div className="App">
       <div className="header">
-        <CssTextField
+        <TextField
           label="Task..."
           value={task}
           name="task"
@@ -87,7 +59,7 @@ const App: FC = () => {
           onChange={handleChange}
           sx={{ marginRight: 2 }}
         />
-        <DayTextField
+        <TextField
           label="Days..."
           value={deadline}
           name="deadline"
