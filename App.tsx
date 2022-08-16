@@ -1,10 +1,8 @@
 import React, { FC, ChangeEvent, useState, useEffect } from 'react';
 import './App.css';
-import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import AddTaskIcon from '@mui/icons-material/AddTask';
 import { Button, Typography } from '@mui/material';
-import RefreshIcon from '@mui/icons-material/Refresh';
 import { ITask } from './Interfaces';
 import ToDOTask from './Components/ToDOTask';
 
@@ -41,12 +39,14 @@ const App: FC = () => {
     setDeadline(0);
     setCompleted(false);
   };
-  const deleteTask = (taskNametoDelete: string): void => {
-    setTodolist(todoList.filter((t) => t.taskName !== taskNametoDelete));
-    let a = todoList.filter((t) => t.taskName === taskNametoDelete);
+  const deleteTask = (taskID: number): void => {
+    setTodolist(todoList.filter((t) => t.id !== taskID));
+    let a = todoList.filter((t) => t.id === taskID);
     setdeletedlist([...deletedList, ...a]);
     console.log(deletedList);
   };
+
+  const updateTaskHandler = (taskName: string): void => {};
 
   return (
     <div className="App">
@@ -87,22 +87,28 @@ const App: FC = () => {
           );
         })}
       </div>
-      <Typography sx={{ textAlign: 'left', fontSize: 24, marginLeft: 1 }}>
-        Deleted Task:
-      </Typography>
-      <div className="todo2">
-        {deletedList.map((task: ITask, key: number) => {
-          return (
-            <div className="list">
-              <ul>
-                <li key={key}>
-                  {task.taskName}&nbsp;&nbsp;&nbsp;{task.deadline}days
-                </li>
-              </ul>
-            </div>
-          );
-        })}
-      </div>
+      {deletedList.length === 0 ? (
+        <div></div>
+      ) : (
+        <div>
+          <Typography sx={{ textAlign: 'left', fontSize: 24, marginLeft: 1 }}>
+            Deleted Task:
+          </Typography>
+          <div className="todo2">
+            {deletedList.map((task: ITask, key: number) => {
+              return (
+                <div className="list">
+                  <ul>
+                    <li key={key}>
+                      {task.taskName}&nbsp;&nbsp;&nbsp;{task.deadline}days
+                    </li>
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

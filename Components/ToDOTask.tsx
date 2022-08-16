@@ -12,7 +12,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 
 interface Props {
   task: ITask;
-  deleteTask(taskName: string): void;
+  deleteTask(taskName: number): void;
 }
 
 const ToDOTask = ({ task, deleteTask }: Props, key: number) => {
@@ -58,7 +58,7 @@ const ToDOTask = ({ task, deleteTask }: Props, key: number) => {
         </Button>
         <Button
           onClick={() => {
-            deleteTask(task.taskName);
+            deleteTask(task.id);
           }}
         >
           <DeleteIcon sx={{ color: 'white', marginLeft: 2 }} />
@@ -66,7 +66,7 @@ const ToDOTask = ({ task, deleteTask }: Props, key: number) => {
       </div>
       <Dialog open={open} onClose={dialogClose}>
         <DialogTitle>EDIT TASKS</DialogTitle>
-        <DialogContent sx={{ width: 300, height: 170 }}>
+        <DialogContent>
           <DialogContentText>Enter Task Name:</DialogContentText>
           <TextField
             autoFocus
@@ -75,7 +75,7 @@ const ToDOTask = ({ task, deleteTask }: Props, key: number) => {
             onChange={(e) => {
               setEditedtask(e.target.value);
             }}
-            sx={{ width:290,marginTop:2,marginBottom:1 }}
+            sx={{ width: 200 }}
           />
           <DialogContentText>Enter Task Duration:</DialogContentText>
           <TextField
@@ -85,7 +85,7 @@ const ToDOTask = ({ task, deleteTask }: Props, key: number) => {
             onChange={(e) => {
               setEditedDay(Number(e.target.value));
             }}
-            sx={{ width:290,marginTop:2,marginBottom:1 }}
+            sx={{ width: 200 }}
           />
         </DialogContent>
         <DialogActions>
